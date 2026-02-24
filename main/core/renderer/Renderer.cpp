@@ -13,6 +13,6 @@ void Renderer::render() const {
 	program.use();
 	for (const auto &mesh : meshes) {
 		mesh.getVAO().bind();
-		glDrawElements(GL_TRIANGLES, mesh.getVertexCount(), GL_UNSIGNED_INT, 0);
+		glDrawElements(GL_TRIANGLES, mesh.getIndicesCount(), GL_UNSIGNED_INT, 0);
 	}
 }

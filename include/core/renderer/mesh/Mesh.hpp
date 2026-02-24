@@ -15,10 +15,13 @@ public:
 
 	VAO &getVAO() const { return *vao; }
 	int getVertexCount() const { return vertexCount; }
+	int getIndicesCount() const { return indicesCount; }
 	void draw() const;
 
 private:
 	int vertexCount;
+	int indicesCount;
+
 	std::shared_ptr<core::renderer::VAO> vao;
 	std::shared_ptr<core::renderer::VBO> vbo;
 	std::shared_ptr<core::renderer::EBO> ebo;

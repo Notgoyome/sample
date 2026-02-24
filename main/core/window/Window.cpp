@@ -29,17 +29,21 @@ Window::Window() {
 
 	// Temporary
 	std::vector<Vertex> vertices = {
-		{ { -0.9f, -0.5f, 0.0f }, { 1.0f, 1.0f, 1.0f } }, // DL
-		{ { 0.5f, -0.5f, 0.0f }, { 1.0f, 0.0f, 0.0f } }, // DR
-		{ { 0.0f, 0.5f, 0.0f }, { 0.0f, 1.0f, 0.0f } }, // Top
-		// { { 0.5f, 0.5f, 0.0f }, { 0.0f, 0.1f, 1.0f } } // TR
+		{ { -0.5f, -0.5f, 0.0f }, { 1.0f, 1.0f, 1.0f } }, // LD
+		{ { 0.5f, -0.5f, 0.0f }, { 1.0f, 0.0f, 0.0f } }, // RD
+		{ { -0.5f, 0.5f, 0.0f }, { 0.0f, 0.0f, 1.0f } }, // LT
+		{ { 0.5f, 0.5f, 0.0f }, { 0.0f, 1.0f, 0.0f } }, // RT
 	};
 
 	std::vector<GLuint> indices = {
 		0,
 		1,
-		2, // First triangle
-		// 1, 2, 3 // Second triangle
+		2,
+
+		2,
+		1,
+		3,
+
 	};
 
 	mesh = std::make_unique<core::renderer::Mesh>(vertices, indices);

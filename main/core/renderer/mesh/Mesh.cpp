@@ -5,15 +5,18 @@ Mesh::Mesh(std::vector<Vertex> vertices, std::vector<GLuint> indices) {
 	const size_t vertexSize = vertices.size() * sizeof(Vertex);
 
 	vertexCount = vertices.size();
+	indicesCount = indices.size();
+
 	vbo = std::make_unique<core::renderer::VBO>(vertexSize, vertices.data());
 	ebo = std::make_unique<core::renderer::EBO>(indices);
 	vao = std::make_unique<core::renderer::VAO>();
 
 	vao->bind();
+	ebo->bind();
 
 	vao->linkVBO(*vbo, 0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void *)0);
 	vao->linkVBO(*vbo, 1, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void *)(offsetof(Vertex, color)));
-	ebo->bind();
+	vao->linkVBO(*vbo, 2, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void *)(offsetof(Vertex, texCoords)));
 }
 
 Mesh::~Mesh() {
@@ -21,5 +24,5 @@ Mesh::~Mesh() {
 
 void Mesh::draw() const {
 	vao->bind();
-	glDrawElements(GL_TRIANGLES, vertexCount, GL_UNSIGNED_INT, 0);
+	glDrawElements(GL_TRIANGLES, indicesCount, GL_UNSIGNED_INT, 0);
 }
