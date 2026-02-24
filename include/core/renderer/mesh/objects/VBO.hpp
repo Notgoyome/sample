@@ -2,10 +2,12 @@
 
 #include "../../IGLObject.hpp"
 #include <glad.h>
+#include <cstddef>
+
 namespace core::renderer {
 class VBO : public IGLObject {
 public:
-	VBO(void *vertices, int count);
+	VBO(const size_t size, const void *vertices);
 	~VBO();
 
 	void bind() const override;

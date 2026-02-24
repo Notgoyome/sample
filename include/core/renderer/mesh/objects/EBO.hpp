@@ -2,10 +2,11 @@
 
 #include "../../IGLObject.hpp"
 #include <glad.h>
+#include <vector>
 namespace core::renderer {
 class EBO : public IGLObject {
 public:
-	EBO(GLuint indices[], int count);
+	EBO(std::vector<GLuint> indices);
 	~EBO();
 
 	void bind() const override;

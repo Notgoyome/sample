@@ -28,48 +28,27 @@ Window::Window() {
 	glViewport(0, 0, width, height);
 
 	// Temporary
-	GLfloat vertices[] = {
-		-0.5f,
-		-0.5f,
-		0.0f, // DL
-		1.0f,
-		1.0f,
-		1.0f, // Color DL
+	std::vector<GLfloat> vertices = {
+		-0.5f, -0.5f, 0.0f, // DL
+		1.0f, 1.0f, 1.0f, // Color DL
 
-		0.5f,
-		-0.5f,
-		0.0f, // DR
-		1.0f,
-		0.0f,
-		0.0f, // Color DR
+		0.5f, -0.5f, 0.0f, // DR
+		1.0f, 0.0f, 0.0f, // Color DR
 
-		0.0f,
-		0.5f,
-		0.0f, // Top
-		0.0f,
-		1.0f, // Color Top
-		0.0f,
+		0.0f, 0.5f, 0.0f, // Top
+		0.0f, 1.0f, 0.0f, // Color Top
 
-		0.5f,
-		0.5f,
-		0.0f, // TR
-		0.0f,
-		0.1f,
-		1.0f, // Color TR
+		0.5f, 0.5f, 0.0f, // TR
+		0.0f, 0.1f, 1.0f // Color TR
 	};
 
-	GLuint indices[] = {
-		0,
-		1,
-		2, // First triangle
-		1,
-		2,
-		3, // Second triangle
+	std::vector<GLuint> indices = {
+		0, 1, 2, // First triangle
+		1, 2, 3 // Second triangle
 	};
 
 	program = std::make_unique<core::renderer::Program>("assets/shaders/vertex.glsl", "assets/shaders/fragment.glsl");
-
-	mesh = std::make_unique<core::renderer::Mesh>(vertices, indices, sizeof(vertices), sizeof(indices));
+	mesh = std::make_unique<core::renderer::Mesh>(vertices, indices);
 	// EndTemporary
 	program->use();
 }
