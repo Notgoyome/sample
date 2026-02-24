@@ -14,10 +14,13 @@ public:
 	~Mesh();
 
 	VAO &getVAO() const { return *vao; }
+	int getVertexCount() const { return vertexCount; }
+	void draw() const;
 
 private:
-	std::unique_ptr<core::renderer::VAO> vao;
-	std::unique_ptr<core::renderer::VBO> vbo;
-	std::unique_ptr<core::renderer::EBO> ebo;
+	int vertexCount;
+	std::shared_ptr<core::renderer::VAO> vao;
+	std::shared_ptr<core::renderer::VBO> vbo;
+	std::shared_ptr<core::renderer::EBO> ebo;
 };
 } //namespace core::renderer

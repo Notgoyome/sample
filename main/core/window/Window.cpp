@@ -12,38 +12,39 @@ Window::Window() {
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-
 	window = glfwCreateWindow(width, height, "opengl project", nullptr, nullptr);
 	if (!window) {
 		glfwTerminate();
 		throw std::runtime_error("Window failed");
 	}
 	glfwMakeContextCurrent(window);
-
 	int result = gladLoadGL();
 	if (!result) {
 		throw std::runtime_error("Failed to initialized GLAD");
 	}
 
+	renderer = std::make_shared<core::renderer::Renderer>();
+
 	glViewport(0, 0, width, height);
 
 	// Temporary
 	std::vector<Vertex> vertices = {
-		{ { -0.5f, -0.5f, 0.0f }, { 1.0f, 1.0f, 1.0f } }, // DL
+		{ { -0.9f, -0.5f, 0.0f }, { 1.0f, 1.0f, 1.0f } }, // DL
 		{ { 0.5f, -0.5f, 0.0f }, { 1.0f, 0.0f, 0.0f } }, // DR
 		{ { 0.0f, 0.5f, 0.0f }, { 0.0f, 1.0f, 0.0f } }, // Top
-		{ { 0.5f, 0.5f, 0.0f }, { 0.0f, 0.1f, 1.0f } } // TR
+		// { { 0.5f, 0.5f, 0.0f }, { 0.0f, 0.1f, 1.0f } } // TR
 	};
 
 	std::vector<GLuint> indices = {
-		0, 1, 2, // First triangle
-		1, 2, 3 // Second triangle
+		0,
+		1,
+		2, // First triangle
+		// 1, 2, 3 // Second triangle
 	};
 
-	program = std::make_unique<core::renderer::Program>("assets/shaders/vertex.glsl", "assets/shaders/fragment.glsl");
 	mesh = std::make_unique<core::renderer::Mesh>(vertices, indices);
 	// EndTemporary
-	program->use();
+	renderer->addMesh(*mesh);
 }
 
 Window::~Window() {
@@ -55,8 +56,7 @@ void Window::process() {
 	glClearColor(1.0f, 0.3f, 0.3f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT);
 
-	// glDrawArrays(GL_TRIANGLES, 0, 3);
-	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+	renderer->render();
 	glfwSwapBuffers(window);
 
 	glfwPollEvents();

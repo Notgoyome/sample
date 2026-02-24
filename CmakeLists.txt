@@ -17,7 +17,7 @@ add_executable(${PROJECT_NAME}
     main/core/window/Window.cpp
     main/core/renderer/Program.cpp
     main/core/renderer/mesh/Mesh.cpp
-
+    main/core/renderer/Renderer.cpp
     main/core/renderer/mesh/objects/VBO.cpp
     main/core/renderer/mesh/objects/VAO.cpp
     main/core/renderer/mesh/objects/EBO.cpp

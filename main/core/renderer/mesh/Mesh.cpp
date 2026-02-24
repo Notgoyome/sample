@@ -4,6 +4,7 @@ using namespace core::renderer;
 Mesh::Mesh(std::vector<Vertex> vertices, std::vector<GLuint> indices) {
 	const size_t vertexSize = vertices.size() * sizeof(Vertex);
 
+	vertexCount = vertices.size();
 	vbo = std::make_unique<core::renderer::VBO>(vertexSize, vertices.data());
 	ebo = std::make_unique<core::renderer::EBO>(indices);
 	vao = std::make_unique<core::renderer::VAO>();
@@ -16,4 +17,9 @@ Mesh::Mesh(std::vector<Vertex> vertices, std::vector<GLuint> indices) {
 }
 
 Mesh::~Mesh() {
+}
+
+void Mesh::draw() const {
+	vao->bind();
+	glDrawElements(GL_TRIANGLES, vertexCount, GL_UNSIGNED_INT, 0);
 }
