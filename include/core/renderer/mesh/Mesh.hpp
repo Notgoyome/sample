@@ -10,7 +10,7 @@
 namespace core::renderer {
 class Mesh {
 public:
-	Mesh(std::vector<GLfloat> vertices, std::vector<GLuint> indices);
+	Mesh(std::vector<Vertex> vertices, std::vector<GLuint> indices);
 	~Mesh();
 
 	VAO &getVAO() const { return *vao; }

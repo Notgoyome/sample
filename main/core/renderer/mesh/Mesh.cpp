@@ -1,8 +1,8 @@
 #include "core/renderer/mesh/Mesh.hpp"
 using namespace core::renderer;
 
-Mesh::Mesh(std::vector<GLfloat> vertices, std::vector<GLuint> indices) {
-	const size_t vertexSize = vertices.size() * sizeof(GLfloat);
+Mesh::Mesh(std::vector<Vertex> vertices, std::vector<GLuint> indices) {
+	const size_t vertexSize = vertices.size() * sizeof(Vertex);
 
 	vbo = std::make_unique<core::renderer::VBO>(vertexSize, vertices.data());
 	ebo = std::make_unique<core::renderer::EBO>(indices);
