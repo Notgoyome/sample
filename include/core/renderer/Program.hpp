@@ -12,6 +12,8 @@ public:
 	void use() const;
 	void bufferData(int buffer, int size, const void *data, int usage) const;
 
+	GLuint getProgramID() const { return id; }
+
 private:
 	GLuint id;
 };

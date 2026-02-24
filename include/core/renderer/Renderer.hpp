@@ -13,6 +13,8 @@ public:
 	void removeMesh(size_t index) { meshes.erase(meshes.begin() + index); }
 	void clearMeshes() { meshes.clear(); }
 
+	GLuint setTexture(std::string texturePath);
+
 	void render() const;
 
 private:

@@ -3,6 +3,12 @@
   "[cpp]": {
     "editor.defaultFormatter": "xaver.clang-format"
   },
+  "clangd.arguments": [
+    "--background-index",
+    "--compile-commands-dir=build",
+    "--clang-tidy",
+    "--header-insertion=never"
+  ],
   "C_Cpp_Runner.cCompilerPath": "clang",
   "C_Cpp_Runner.cppCompilerPath": "clang++",
   "C_Cpp_Runner.debuggerPath": "lldb",

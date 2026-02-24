@@ -1,7 +1,7 @@
 #include "core/renderer/mesh/Mesh.hpp"
 using namespace core::renderer;
 
-Mesh::Mesh(std::vector<Vertex> vertices, std::vector<GLuint> indices) {
+Mesh::Mesh(std::vector<Vertex> vertices, std::vector<GLuint> indices, GLuint textureID) : textureID(textureID) {
 	const size_t vertexSize = vertices.size() * sizeof(Vertex);
 
 	vertexCount = vertices.size();
@@ -19,10 +19,19 @@ Mesh::Mesh(std::vector<Vertex> vertices, std::vector<GLuint> indices) {
 	vao->linkVBO(*vbo, 2, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void *)(offsetof(Vertex, texCoords)));
 }
 
+void Mesh::bindTexture(const core::renderer::Program *program) const {
+	glUseProgram(program->getProgramID());
+	glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_2D, textureID);
+	GLuint location = glGetUniformLocation(program->getProgramID(), "u_texture");
+	glUniform1i(location, 0);
+}
+
 Mesh::~Mesh() {
 }
 
-void Mesh::draw() const {
+void Mesh::draw(const core::renderer::Program *program) const {
 	vao->bind();
+	bindTexture(program);
 	glDrawElements(GL_TRIANGLES, indicesCount, GL_UNSIGNED_INT, 0);
 }

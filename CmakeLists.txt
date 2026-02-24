@@ -13,19 +13,20 @@ add_library(glad STATIC ${LIB_DIR}/glad/src/glad.c)
 target_include_directories(glad PUBLIC ${LIB_DIR}/glad/include)
 
 add_executable(${PROJECT_NAME}
-    main/main.cpp
-    main/core/window/Window.cpp
-    main/core/renderer/Program.cpp
-    main/core/renderer/mesh/Mesh.cpp
-    main/core/renderer/Renderer.cpp
-    main/core/renderer/mesh/objects/VBO.cpp
-    main/core/renderer/mesh/objects/VAO.cpp
-    main/core/renderer/mesh/objects/EBO.cpp
+main/main.cpp
+main/core/window/Window.cpp
+main/core/renderer/Program.cpp
+main/core/renderer/mesh/Mesh.cpp
+main/core/renderer/Renderer.cpp
+main/core/renderer/mesh/objects/VBO.cpp
+main/core/renderer/mesh/objects/VAO.cpp
+main/core/renderer/mesh/objects/EBO.cpp
 
-    main/utils/Parse.cpp
+main/utils/Parse.cpp
 )
-target_include_directories(${PROJECT_NAME} PUBLIC ${INCLUDE_DIR})
 
+target_include_directories(${PROJECT_NAME} PUBLIC ${INCLUDE_DIR})
+target_include_directories(${PROJECT_NAME} PUBLIC ${LIB_DIR}/stb_image)
 
 target_link_libraries(${PROJECT_NAME}
     PRIVATE

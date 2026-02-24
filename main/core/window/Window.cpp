@@ -28,11 +28,13 @@ Window::Window() {
 	glViewport(0, 0, width, height);
 
 	// Temporary
+	GLuint textureId = renderer->setTexture("assets/text.png");
+
 	std::vector<Vertex> vertices = {
-		{ { -0.5f, -0.5f, 0.0f }, { 1.0f, 1.0f, 1.0f } }, // LD
-		{ { 0.5f, -0.5f, 0.0f }, { 1.0f, 0.0f, 0.0f } }, // RD
-		{ { -0.5f, 0.5f, 0.0f }, { 0.0f, 0.0f, 1.0f } }, // LT
-		{ { 0.5f, 0.5f, 0.0f }, { 0.0f, 1.0f, 0.0f } }, // RT
+		{ { -0.5f, -0.5f, 0.0f }, { 1.0f, 1.0f, 1.0f }, { 0.0f, 0.0f } }, // LD
+		{ { 0.5f, -0.5f, 0.0f }, { 1.0f, 0.0f, 0.0f }, { 1.0f, 0.0f } }, // RD
+		{ { -0.5f, 0.5f, 0.0f }, { 0.0f, 0.0f, 1.0f }, { 0.0f, 1.0f } }, // LT
+		{ { 0.5f, 0.5f, 0.0f }, { 0.0f, 1.0f, 0.0f }, { 1.0f, 1.0f } }, // RT
 	};
 
 	std::vector<GLuint> indices = {
@@ -46,7 +48,7 @@ Window::Window() {
 
 	};
 
-	mesh = std::make_unique<core::renderer::Mesh>(vertices, indices);
+	mesh = std::make_unique<core::renderer::Mesh>(vertices, indices, textureId);
 	// EndTemporary
 	renderer->addMesh(*mesh);
 }
@@ -57,7 +59,7 @@ Window::~Window() {
 }
 
 void Window::process() {
-	glClearColor(1.0f, 0.3f, 0.3f, 1.0f);
+	glClearColor(0.0f, 0.3f, 0.3f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT);
 
 	renderer->render();
