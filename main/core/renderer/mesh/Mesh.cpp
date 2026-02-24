@@ -11,8 +11,8 @@ Mesh::Mesh(std::vector<Vertex> vertices, std::vector<GLuint> indices) {
 
 	vao->bind();
 
-	vao->linkVBO(*vbo, 0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (void *)0);
-	vao->linkVBO(*vbo, 1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (void *)(3 * sizeof(GLfloat)));
+	vao->linkVBO(*vbo, 0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void *)0);
+	vao->linkVBO(*vbo, 1, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void *)(offsetof(Vertex, color)));
 	ebo->bind();
 }
 
