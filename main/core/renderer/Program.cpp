@@ -24,7 +24,6 @@ Program::Program(std::string vertexPath, std::string fragmentPath) {
 	// Fragments
 	GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
 	std::string fragmentShaderSource = readFile(fragmentPath);
-	//"assets/shaders/fragment.glsl"
 	const char *fragmentShaderSourceCStr = fragmentShaderSource.c_str();
 	glShaderSource(fragmentShader, 1, &fragmentShaderSourceCStr, NULL);
 	glCompileShader(fragmentShader);

@@ -3,7 +3,7 @@
 using namespace core::renderer;
 
 Renderer::Renderer() :
-		program("assets/shaders/vertex.glsl", "assets/shaders/fragment.glsl") {
+		program("main/assets/shaders/vertex.glsl", "main/assets/shaders/fragment.glsl") {
 }
 
 Renderer::~Renderer() {
