@@ -1,8 +1,8 @@
 #pragma once
 
 #define GLFW_INCLUDE_NONE
-#include "core/renderer/Mesh.hpp"
 #include "core/renderer/Program.hpp"
+#include "core/renderer/mesh/Mesh.hpp"
 
 #include <GLFW/glfw3.h>
 #include <glad.h>

@@ -1,7 +1,7 @@
-#include "core/renderer/objects/VBO.hpp"
+#include "core/renderer/mesh/objects/VBO.hpp"
 using namespace core::renderer;
 
-VBO::VBO(GLfloat vertices[], int count) {
+VBO::VBO(void *vertices, int count) {
 	glGenBuffers(1, &id);
 	glBindBuffer(GL_ARRAY_BUFFER, id);
 	glBufferData(GL_ARRAY_BUFFER, count * sizeof(GLfloat), vertices, GL_STATIC_DRAW);

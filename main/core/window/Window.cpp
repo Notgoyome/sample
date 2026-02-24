@@ -32,16 +32,30 @@ Window::Window() {
 		-0.5f,
 		-0.5f,
 		0.0f, // DL
+		1.0f,
+		1.0f,
+		1.0f, // Color DL
+
 		0.5f,
 		-0.5f,
 		0.0f, // DR
+		1.0f,
+		0.0f,
+		0.0f, // Color DR
+
 		0.0f,
 		0.5f,
 		0.0f, // Top
+		0.0f,
+		1.0f, // Color Top
+		0.0f,
 
 		0.5f,
 		0.5f,
 		0.0f, // TR
+		0.0f,
+		0.1f,
+		1.0f, // Color TR
 	};
 
 	GLuint indices[] = {

@@ -1,14 +1,12 @@
 #pragma once
 
-#include "../IGLObject.hpp"
-#include "EBO.hpp"
-#include "VBO.hpp"
+#include "../../IGLObject.hpp"
 #include <glad.h>
 namespace core::renderer {
-class VAO : public IGLObject {
+class EBO : public IGLObject {
 public:
-	VAO(VBO &vbo, EBO &_ebo);
-	~VAO();
+	EBO(GLuint indices[], int count);
+	~EBO();
 
 	void bind() const override;
 	void unbind() const override;

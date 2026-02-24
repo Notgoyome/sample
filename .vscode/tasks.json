@@ -3,14 +3,14 @@
     "tasks": [
         {
             "label": "build",
-            "type":"shell",
-            "command": "cmake --build build",
+            "type": "shell",
+            "command": "make build",
             "group": "build"
         },
         {
-            "label":"Build and run",
-            "type":"shell",
-            "command": "cmake --build build && ./build/app"
+            "label": "Build and run",
+            "type": "shell",
+            "command": "make run"
         }
     ]
 }

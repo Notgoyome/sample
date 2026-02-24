@@ -16,12 +16,12 @@ add_executable(${PROJECT_NAME}
     main/main.cpp
     main/core/window/Window.cpp
     main/core/renderer/Program.cpp
-    main/core/renderer/Mesh.cpp
+    main/core/renderer/mesh/Mesh.cpp
 
-    main/core/renderer/objects/VBO.cpp
-    main/core/renderer/objects/VAO.cpp
-    main/core/renderer/objects/EBO.cpp
-    
+    main/core/renderer/mesh/objects/VBO.cpp
+    main/core/renderer/mesh/objects/VAO.cpp
+    main/core/renderer/mesh/objects/EBO.cpp
+
     main/utils/Parse.cpp
 )
 target_include_directories(${PROJECT_NAME} PUBLIC ${INCLUDE_DIR})

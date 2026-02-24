@@ -1,4 +1,4 @@
-#include "core/renderer/objects/EBO.hpp"
+#include "core/renderer/mesh/objects/EBO.hpp"
 using namespace core::renderer;
 
 EBO::EBO(GLuint indices[], int count) {
